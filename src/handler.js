@@ -7,7 +7,7 @@ const addNoteHandler = (request, h) => {
   const { title, tags, body } = request.payload;
 
   const id = nanoid(16);
-  const createdAt = new Date().toISOString;
+  const createdAt = new Date().toISOString();
   const updateAt = createdAt;
 
   const newNote = {
@@ -50,7 +50,7 @@ const getAllNotesHandler = () => ({
 const getNoteByIdHandler = (request, h) => {
   const { id } = request.params;
 
-  const note = notes.filter((n) => n.id === id[0]);
+  const note = notes.filter((n) => n.id === id)[0];
 
   if (note !== undefined) {
     return {
@@ -74,7 +74,7 @@ const editNotedByIdHandler = (request, h) => {
   const { id } = request.params;
 
   const { title, tags, body } = request.payload;
-  const updateAt = new Date().toISOString;
+  const updateAt = new Date().toISOString();
   const index = notes.findIndex((note) => note.id === id);
 
   if (index !== -1) {
